@@ -18,7 +18,10 @@ impl InferenceEngine {
         let model = Model::load(model_path)?;
         let runtime = InferenceRuntime::new(&model)?;
 
-        Ok(Self { _model: model, runtime })
+        Ok(Self {
+            _model: model,
+            runtime,
+        })
     }
 
     pub fn predict(&self, input: &Array1<f32>) -> Result<Array1<f32>, InferenceError> {
