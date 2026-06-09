@@ -1,4 +1,4 @@
-use ndarray::{Array1, Array2};
+use ndarray::Array1;
 use rustfft::FftPlanner;
 use std::sync::Arc;
 
@@ -17,7 +17,7 @@ const FFT_SIZE: usize = 2048;
 pub struct AudioProcessor {
     sample_rate: usize,
     fft_size: usize,
-    planner: Arc<FftPlanner<f32>>,
+    _planner: Arc<FftPlanner<f32>>,
 }
 
 impl AudioProcessor {
@@ -25,12 +25,8 @@ impl AudioProcessor {
         Self {
             sample_rate,
             fft_size,
-            planner: Arc::new(FftPlanner::new()),
+            _planner: Arc::new(FftPlanner::new()),
         }
-    }
-
-    pub fn default() -> Self {
-        Self::new(SAMPLE_RATE, FFT_SIZE)
     }
 
     pub fn process_audio(&self, samples: &[f32]) -> Result<ProcessedAudio, AudioError> {
@@ -56,9 +52,15 @@ impl AudioProcessor {
         Ok(Array1::zeros(self.fft_size / 2))
     }
 
-    fn extract_features(&self, spectrum: &Array1<f32>) -> Result<Array1<f32>, AudioError> {
+    fn extract_features(&self, _spectrum: &Array1<f32>) -> Result<Array1<f32>, AudioError> {
         // Placeholder feature extraction
         Ok(Array1::zeros(64))
+    }
+}
+
+impl Default for AudioProcessor {
+    fn default() -> Self {
+        Self::new(SAMPLE_RATE, FFT_SIZE)
     }
 }
 

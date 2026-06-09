@@ -12,7 +12,7 @@ impl Filter {
         }
     }
 
-    pub fn apply_lowpass(signal: &[f32], cutoff_freq: f32) -> Array1<f32> {
+    pub fn apply_lowpass(signal: &[f32], _cutoff_freq: f32) -> Array1<f32> {
         Array1::from(signal.to_vec())
     }
 }
