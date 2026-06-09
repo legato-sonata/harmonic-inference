@@ -28,8 +28,6 @@ impl InferenceEngine {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn test_engine_creation() {
         // Mock test - would use actual model in production

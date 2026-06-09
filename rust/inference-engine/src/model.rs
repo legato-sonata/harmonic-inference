@@ -1,5 +1,6 @@
 use crate::InferenceError;
 
+#[derive(Clone, Debug)]
 pub struct Model {
     pub name: String,
     pub version: String,
@@ -8,7 +9,7 @@ pub struct Model {
 }
 
 impl Model {
-    pub fn load(path: &str) -> Result<Self, InferenceError> {
+    pub fn load(_path: &str) -> Result<Self, InferenceError> {
         Ok(Self {
             name: "default".to_string(),
             version: "0.1.0".to_string(),
